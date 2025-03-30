@@ -4,6 +4,7 @@ numpy
 opencv-python
 mediapipe
 ultralytics
+python-multipart
 
 # PyTorch + torchvision for Python 3.11 (CPU by default on Render)
 torch==2.1.0
