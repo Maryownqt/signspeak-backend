@@ -1,0 +1,13 @@
+# Core runtime dependencies
+fastapi
+uvicorn
+numpy
+opencv-python
+mediapipe
+ultralytics
+
+# PyTorch with CUDA 11.7 support
+torch==1.13.0+cu117
+torchvision==0.14.0+cu117
+torchaudio==0.13.0+cu117
+--extra-index-url https://download.pytorch.org/whl/cu117
