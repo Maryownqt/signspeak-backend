@@ -1,15 +1,14 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from inference_module import run_inference  # Your inference function
+from app.inference_module import run_inference  # Fixed import path for deployment
 
 app = FastAPI()
 
-# Configure CORS
-# Replace "https://yourapp.netlify.app" with your actual Netlify URL
+# Configure CORS for Netlify frontend access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://signspeak-trial.netlify.app/"],
+    allow_origins=["https://signspeak-trial.netlify.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -18,7 +17,7 @@ app.add_middleware(
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     contents = await file.read()
-    # For simplicity, assume run_inference handles all data processing:
+    # If run_inference handles raw bytes or image decoding internally
     prediction = run_inference(contents)
     return {"gesture": prediction}
 
