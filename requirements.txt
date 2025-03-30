@@ -5,9 +5,7 @@ opencv-python
 mediapipe
 ultralytics
 
-# PyTorch + torchvision for Python 3.10 and CPU
-torch==1.13.0+cpu
-torchvision==0.14.0+cpu
-torchaudio==0.13.0
-
---extra-index-url https://download.pytorch.org/whl/cpu
+# PyTorch + torchvision for Python 3.11 (CPU by default on Render)
+torch==2.1.0
+torchvision==0.16.0
+torchaudio==2.1.0
