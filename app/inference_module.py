@@ -13,7 +13,7 @@ yolo_model = YOLO(yolo_weights).to(device)
 
 # --- Load Trained SignBERT-like Model ---
 # Ensure your SignBERT class definition is available.
-from training_finetune import SignBERT  # Replace with your actual module or definition.
+from app.training_finetune import SignBERT  # Replace with your actual module or definition.
 # Load the model with saved weights.
 model_signbert = SignBERT(input_dim=63, d_model=256, num_layers=3, num_heads=8, dropout=0.1, num_classes=40)
 model_signbert.load_state_dict(torch.load(r"app/models/signbert_finetuned_weighted_v4.pth", map_location=device))
