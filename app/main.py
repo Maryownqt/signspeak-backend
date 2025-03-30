@@ -5,13 +5,20 @@ from inference_module import run_inference  # Your inference function
 
 app = FastAPI()
 
-# CORS will be configured later (see step 5.4)
+# Configure CORS
+# Replace "https://yourapp.netlify.app" with your actual Netlify URL
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://signspeak-trial.netlify.app/"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     contents = await file.read()
-    # Process contents (e.g., convert to image, keypoints, etc.)
-    # For simplicity, assume run_inference handles the conversion.
+    # For simplicity, assume run_inference handles all data processing:
     prediction = run_inference(contents)
     return {"gesture": prediction}
 

@@ -7,7 +7,7 @@ from ultralytics import YOLO
 import mediapipe as mp
 
 # --- Load YOLOv8 Hand Detector ---
-yolo_weights = r"E:\SIGNSPEAK\deployment\models\best.pt"  # Update as needed
+yolo_weights = r"app/models/best.pt"  # Update as needed
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 yolo_model = YOLO(yolo_weights).to(device)
 
@@ -16,7 +16,7 @@ yolo_model = YOLO(yolo_weights).to(device)
 from training_finetune import SignBERT  # Replace with your actual module or definition.
 # Load the model with saved weights.
 model_signbert = SignBERT(input_dim=63, d_model=256, num_layers=3, num_heads=8, dropout=0.1, num_classes=40)
-model_signbert.load_state_dict(torch.load(r"E:\SIGNSPEAK\deployment\models\signbert_finetuned_weighted_v4.pth", map_location=device))
+model_signbert.load_state_dict(torch.load(r"app/models/signbert_finetuned_weighted_v4.pth", map_location=device))
 model_signbert.to(device)
 model_signbert.eval()
 
