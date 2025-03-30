@@ -2,6 +2,7 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from app.inference_module import run_inference  # Fixed import path for deployment
+import os
 
 app = FastAPI()
 
@@ -22,4 +23,5 @@ async def predict(file: UploadFile = File(...)):
     return {"gesture": prediction}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))  # fallback to 8000 for local dev
+    uvicorn.run(app, host="0.0.0.0", port=port)
