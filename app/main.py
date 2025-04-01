@@ -9,7 +9,7 @@ app = FastAPI()
 # Configure CORS for Netlify frontend access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://signspeak-trial.netlify.app"],
+    allow_origins=["https://signspeak-trial1.netlify.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
