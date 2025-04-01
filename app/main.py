@@ -6,7 +6,7 @@ import os
 
 app = FastAPI()
 
-# Configure CORS for Netlify frontend access
+# Configure CORS for Netlify frontend access (update with your actual domain)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["https://signspeak-trial1.netlify.app"],
@@ -18,10 +18,9 @@ app.add_middleware(
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     contents = await file.read()
-    # If run_inference handles raw bytes or image decoding internally
     prediction = run_inference(contents)
     return {"gesture": prediction}
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))  # fallback to 8000 for local dev
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)
