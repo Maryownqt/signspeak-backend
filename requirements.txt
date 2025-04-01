@@ -9,4 +9,3 @@ python-multipart
 # PyTorch + torchvision for Python 3.11 (CPU by default on Render)
 torch==2.1.0
 torchvision==0.16.0
-torchaudio==2.1.0
