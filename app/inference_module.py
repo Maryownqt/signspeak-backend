@@ -5,7 +5,7 @@ from collections import deque
 import time
 from ultralytics import YOLO
 import mediapipe as mp
-from training_finetune import SignBERT
+from app.training_finetune import SignBERT
 
 # Initialize models and settings (same as before)
 yolo_weights = "app/models/best.pt"  # Use a relative path
